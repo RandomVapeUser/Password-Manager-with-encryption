@@ -23,6 +23,38 @@ while True:
         os.system("cls")
         continue
 
+def encrypting():
+
+    os.system("cls")
+
+    key = Fernet.generate_key()
+
+    print("""                                   WARNING:        
+          
+                        Before entering the name of the file you want to encrypt make sure 
+that it is in the same folder/path that this program is in too and dont forget to include its extension such as png,txt.
+          
+          """)
+
+    X = input("Name of the file to encrypt: ")
+
+    with open(f"{X}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def choice():
 
     if X == 1:
