@@ -1,1 +1,1 @@
-File Encryptor using discord webhooks.
+File Encryptor and Descrypter
