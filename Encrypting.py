@@ -1,17 +1,23 @@
-from cryptography.fernet import Fernet
 from discord_webhook import DiscordWebhook, DiscordEmbed
+from cryptography.fernet import Fernet
+import colorama
+import time
 import sys
 import os
-import time
+
+username = os.environ.get("USERNAME")
 
 while True:
 
-    print("""
+    print(f"""
 
-        [1] - Encrypt your files
-        [2] - Decrypt your files
-        [3] - Help
-
+        Welcome to my password manager {username} :)
+          
+        [1] - Add Profile
+        [2] - Delete Profile
+        [3] - See Passwords
+        [4] - Help
+        
         """)
     
     try:
@@ -29,16 +35,24 @@ def encrypting():
 
     key = Fernet.generate_key()
 
-    print("""                                   WARNING:        
+    print("""                                   ~
+                                                    
+                                                    WARNING:        
           
-                        Before entering the name of the file you want to encrypt make sure 
-that it is in the same folder/path that this program is in too and dont forget to include its extension such as png,txt.
+                        Do not use this password manager, it is highly exploitable and editable.
+                                        Made by: salomao31(my discord)
           
           """)
 
-    X = input("Name of the file to encrypt: ")
 
-    with open(f"{X}")
+
+def Profile_Creation():
+
+    print("Loading...")
+    time.sleep(2)
+    os.system("cls")
+
+
 
 
 
