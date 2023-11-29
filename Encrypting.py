@@ -21,7 +21,7 @@ while True:
         """)
     
     try:
-        X = int(input(" "))
+        X1 = int(input(" "))
         break
     except SyntaxError:
         print("You need to enter a numbers not a letter you dummy")
@@ -29,28 +29,39 @@ while True:
         os.system("cls")
         continue
 
-def encrypting():
 
-    os.system("cls")
+os.system("cls")
 
-    key = Fernet.generate_key()
-
-    print("""                                   ~
+print("""                                   
                                                     
                                                     WARNING:        
           
                         Do not use this password manager, it is highly exploitable and editable.
                                         Made by: salomao31(my discord)
           
-          """)
+    """)
 
 
+time.sleep(5)
+print("Loading...")
+time.sleep(2)
+os.system("cls")
 
 def Profile_Creation():
 
-    print("Loading...")
-    time.sleep(2)
-    os.system("cls")
+    global X
+    global Y
+
+    while True:
+
+        try:
+            X = input("Website email: ")
+            time.sleep(2)
+            Y = input("Website Password: ")
+            time.sleep(2)
+        except()
+
+
 
 
 
