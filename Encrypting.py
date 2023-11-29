@@ -1,11 +1,14 @@
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from cryptography.fernet import Fernet
 import colorama
+import random
 import time
 import sys
 import os
 
 username = os.environ.get("USERNAME")
+
+numbgen = 
 
 while True:
 
@@ -47,19 +50,19 @@ print("Loading...")
 time.sleep(2)
 os.system("cls")
 
-def Profile_Creation():
+def saving_to_file():
 
-    global X
-    global Y
+     
+def Profile_Creation():
 
     while True:
 
-        try:
             X = input("Website email: ")
             time.sleep(2)
             Y = input("Website Password: ")
             time.sleep(2)
-        except()
+
+            try 
 
 
 
