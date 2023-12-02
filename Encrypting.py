@@ -32,7 +32,7 @@ def encryption(file):
 
     key = Fernet.generate_key()
     f = Fernet(key)
-    token = file.encrypt(b"File Decrypted successfully")
+    file = files_sorted.encrypt(b"File encrypted successfully")
     print("File encrypted, moving on...")
 
 
