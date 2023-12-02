@@ -1,2 +1,9 @@
-# File-Encrypter-Decryptor
-A litle testing with encryption wich will be usefull for source code or something in the future
+A litle testing by creating a password manager using encryption
+
+Packages used:
+- Cryptoghrapy
+- OS
+- SYS
+- random
+- time
+- colorama
