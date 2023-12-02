@@ -48,14 +48,16 @@ def saving_to_file(email, password):
          file.write(f"{password}\n")
      
 def Profile_Creation():
-
     X = input("Website email: ")
     time.sleep(2)
     Y = input("Website Password: ")
     time.sleep(2)
-    saving_to_file(X,Y)
+    saving_to_file(X, Y)
     print("Successfully saved!")
-    encryption(files_sorted)
+    
+    # Use the most recent file in the directory
+    recent_file = files_sorted[0]
+    encryption(recent_file)  # Pass the filename to the encryption function
     print("Successfully encrypted!")
 
 def choice_assist():
