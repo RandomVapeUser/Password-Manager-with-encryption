@@ -6,15 +6,27 @@ import time
 import sys
 import os
 
+print("""                                   
+                                                    
+                                                    WARNING:        
+          
+                        Do not use this password manager, it is highly exploitable and editable.
+                                        Made by: salomao31(my discord)
+          
+    """)
+
+
+time.sleep(5)
+print("Loading...")
+time.sleep(2)
+os.system("cls")
 username = os.environ.get("USERNAME")
 
-directory = "C:\users\salom\Downloads"
+files = os.listdir(r"C:\\users\\salom\\Downloads")
 
-files = os.listdir(directory)
+files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(r"C:\\users\\salom\\Downloads", x)), reverse=True)
 
-files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(directory, x)), reverse=True)
-
-numb_gen = random.radint(0,2000)
+numb_gen = random.randint(0,2000)
 
 def encryption(file):
 
@@ -22,6 +34,24 @@ def encryption(file):
     f = Fernet(key)
     token = file.encrypt(b"File Decrypted successfully")
     print("File encrypted, moving on...")
+
+
+def saving_to_file(email, password):
+
+    with open(f"ANX{numb_gen}", "w") as file:
+         file.write(f"{email}\n")
+         file.write(f"{password}\n")
+     
+def Profile_Creation():
+
+    X = input("Website email: ")
+    time.sleep(2)
+    Y = input("Website Password: ")
+    time.sleep(2)
+    saving_to_file(X,Y)
+    print("Successfully saved!")
+    encryption(files_sorted)
+    print("Successfully encrypted!")
 
 def choice_assist():
 
@@ -56,7 +86,7 @@ def start():
     
         try:
             X1 = int(input(" "))
-            Choice_assist()
+            choice_assist()
             break
         except SyntaxError:
             print("You need to enter a numbers not a letter you dummy")
@@ -64,37 +94,6 @@ def start():
             os.system("cls")
             continue
 
-
+start()
 os.system("cls")
 
-print("""                                   
-                                                    
-                                                    WARNING:        
-          
-                        Do not use this password manager, it is highly exploitable and editable.
-                                        Made by: salomao31(my discord)
-          
-    """)
-
-
-time.sleep(5)
-print("Loading...")
-time.sleep(2)
-os.system("cls")
-
-def saving_to_file(email, password):
-
-    with open(f"ANX{numb_gen}", "w") as file:
-         file.write(f"{email}\n")
-         file.write(f"{password}\n")
-     
-def Profile_Creation():
-
-    X = input("Website email: ")
-    time.sleep(2)
-    Y = input("Website Password: ")
-    time.sleep(2)
-    saving_to_file(X,Y)
-    print("Successfully saved!")
-    encryption(files_sorted)
-    print("Successfully encrypted!")
