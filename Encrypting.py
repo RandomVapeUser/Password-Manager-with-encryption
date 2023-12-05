@@ -24,7 +24,7 @@ username = os.environ.get("USERNAME")
 
 files = os.listdir(r"C:\\users\\salom\\Downloads")
 
-files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(r"C:\\users\\salom\\Downloads", x)), reverse=True)
+files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
 
 numb_gen = random.randint(0,2000)
 
