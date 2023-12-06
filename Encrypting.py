@@ -27,17 +27,18 @@ files = os.listdir(r"C:\\users\\salom\\Downloads")
 files_sorted = sorted(files, key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
 
 key = Fernet.generate_key()
-cipher_suite = Fernet(key)
+key2 = Fernet(key)
 
 numb_gen = random.randint(0, 2000)
 
 def encryption(file_name):
-    global cipher_suite  
+
+    global key2
 
     with open(file_name, "rb") as file_object:
         file_content = file_object.read()
 
-    encrypted_content = cipher_suite.encrypt(file_content)
+    encrypted_content = key2.encrypt(file_content)
 
     with open(file_name, "wb") as file_object:
         file_object.write(encrypted_content)
@@ -45,10 +46,39 @@ def encryption(file_name):
     print(f"File {file_name} encrypted successfully.")
 
 def saving_to_file(email, password):
+
     with open(f"ANX{numb_gen}.txt", "w") as file:
         file.write(f"{email}\n")
         file.write(f"{password}\n")
 
+def exit_or_back():
+
+    while True:
+
+        print("""
+      
+            [1] - Back to menu
+            [2] - Exit File manager
+      
+            """)
+    
+        X = input("Choose: ")
+
+        if X == 1:
+            os.system("cls")
+            start()
+            break
+        elif X == 2:
+            os.system("cls")
+            print("Goodbye! Thank you for using my program :D!")
+            time.sleep(3)
+            sys.exit()
+        else:
+            print("That number is not on the list :/ what are you doing goofy, try again.")
+            time.sleep(3)
+            os.system("cls")
+            continue
+        
 def email_check():
 
     global email
@@ -82,14 +112,8 @@ def Profile_Creation():
     print("Successfully saved!")
     encryption(file_name) 
     print("File encrypted Successfully")
+    time.sleep(3)
 
-    if files_sorted:
-
-        recent_file = files_sorted[0]
-        encryption(recent_file)  
-        print("Successfully encrypted!")
-    else:
-        print("No files found in the directory.")
 
 def Profile_Deletion():
 
