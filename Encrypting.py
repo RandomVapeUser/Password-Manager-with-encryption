@@ -51,6 +51,39 @@ def saving_to_file(email, password):
         file.write(f"{email}\n")
         file.write(f"{password}\n")
 
+def Help():
+
+    os.system("cls")
+    print("""
+          
+          File manager made my salomao31(discord), my github is https://github.com/RandomVapeUser feel free to check it out.
+          This project is abandoned and it was made for testing purposes as well to test my skills.
+          Feel free to dm me :D.
+          
+          
+          [Enter a number to exit]
+
+          """)
+    
+    while True:
+
+        try:
+            X = int(input(" "))
+            if X == 1:
+                os.system("cls")
+                start()
+                break
+            else:
+                os.system("cls")
+                start()
+                break
+
+        except SyntaxError:
+            print("I said 1 not a letter :/ ")
+            os.system("cls")
+            start()
+            break
+            
 def exit_or_back():
 
     while True:
@@ -116,7 +149,7 @@ def Profile_Creation():
     exit_or_back()
 
 
-def Profile_Deletion():
+def Passwords():
 
     os.system("cls")
 
@@ -129,6 +162,8 @@ def choice_assist():
         Passwords()
     elif X1 == 3:
         Help()
+    elif X1 == 4:
+        sys.exit()
     else: 
         print("Uh oh that doesnt seem right, try again i guess? :( ")
         time.sleep(2)
@@ -141,14 +176,15 @@ def start():
     global X1
 
     while True:
-        
+
         print(f"""
               
             Welcome to my password manager {username} :)
 
             [1] - Add Profile
-            [3] - See Passwords
-            [4] - Help
+            [2] - See Passwords
+            [3] - Help
+            [4] - Exit
 
         """)
 
