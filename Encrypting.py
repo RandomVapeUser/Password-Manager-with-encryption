@@ -31,7 +31,7 @@ cipher_suite = Fernet(key)
 numb_gen = random.randint(0, 2000)
 
 def encryption(file_name):
-    global cipher_suite  # Ensure the global variable is used
+    global cipher_suite  
 
     with open(file_name, "rb") as file_object:
         file_content = file_object.read()
@@ -81,10 +81,9 @@ def Profile_Creation():
     file_name = f"ANX{numb_gen}.txt"
     saving_to_file(email, Y)
     print("Successfully saved!")
-    encryption(file_name)  # Pass the file name to encryption function
+    encryption(file_name) 
     print("File encrypted Successfully")
-    # ... (the rest of your code)
-
+    
     if files_sorted:
 
         recent_file = files_sorted[0]
