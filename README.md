@@ -7,3 +7,7 @@ Packages used:
 - random
 - time
 - colorama
+
+Encryption Working ✅
+Start and choices Working ✅
+Passwords not working
