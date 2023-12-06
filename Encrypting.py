@@ -1,10 +1,11 @@
-from discord_webhook import DiscordWebhook, DiscordEmbed
 from cryptography.fernet import Fernet
 from colorama import Fore
 import random
 import time
 import sys
 import os
+
+os.system("cls")
 
 print(Fore.RED + """                                   
                                                     
@@ -42,8 +43,6 @@ def encryption(file_name):
         file_object.write(encrypted_content)
 
     print(f"File {file_name} encrypted successfully.")
-
-
 
 def saving_to_file(email, password):
     with open(f"ANX{numb_gen}.txt", "w") as file:
@@ -83,7 +82,7 @@ def Profile_Creation():
     print("Successfully saved!")
     encryption(file_name) 
     print("File encrypted Successfully")
-    
+
     if files_sorted:
 
         recent_file = files_sorted[0]
@@ -91,6 +90,11 @@ def Profile_Creation():
         print("Successfully encrypted!")
     else:
         print("No files found in the directory.")
+
+def Profile_Deletion():
+
+    os.system("cls")
+
 
 def choice_assist():
 
@@ -112,11 +116,13 @@ def start():
 
     while True:
         print(f"""
+              
             Welcome to my password manager {username} :)
+
             [1] - Add Profile
-            [2] - Delete Profile
             [3] - See Passwords
             [4] - Help
+
         """)
 
         try:
@@ -128,6 +134,7 @@ def start():
             time.sleep(2)
             os.system("cls")
             continue
+
 
 start()
 os.system("cls")
