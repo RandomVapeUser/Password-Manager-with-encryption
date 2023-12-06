@@ -78,7 +78,7 @@ def exit_or_back():
             time.sleep(3)
             os.system("cls")
             continue
-        
+
 def email_check():
 
     global email
@@ -113,6 +113,7 @@ def Profile_Creation():
     encryption(file_name) 
     print("File encrypted Successfully")
     time.sleep(3)
+    exit_or_back()
 
 
 def Profile_Deletion():
@@ -125,9 +126,9 @@ def choice_assist():
     if X1 == 1:
         Profile_Creation()
     elif X1 == 2:
-        Profile_Deletion()
-    elif X1 == 3:
         Passwords()
+    elif X1 == 3:
+        Help()
     else: 
         print("Uh oh that doesnt seem right, try again i guess? :( ")
         time.sleep(2)
@@ -136,9 +137,11 @@ def choice_assist():
 
 
 def start():
+
     global X1
 
     while True:
+        
         print(f"""
               
             Welcome to my password manager {username} :)
