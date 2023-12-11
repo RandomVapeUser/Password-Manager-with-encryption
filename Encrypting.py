@@ -27,11 +27,13 @@ files = os.listdir(r"C:\\users\\salom\\Downloads")
 
 files_sorted = sorted(files, key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
 
-if os.path.exists(fr"C:\\users\\{username}\\Downloads\\Manager\\Password.txt"):
-    start()
-else:
-    start1()
+def X1():
     
+    if os.path.exists(fr"C:\\users\\{username}\\Downloads\\Manager\\Password.txt"):
+        start()
+    else:
+        start1()
+
 name = ""
 key = Fernet.generate_key()
 key2 = Fernet(key)
