@@ -1,6 +1,7 @@
 from cryptography.fernet import Fernet
 from colorama import Fore
 import random
+import emoji
 import time
 import sys
 import os
@@ -26,6 +27,12 @@ files = os.listdir(r"C:\\users\\salom\\Downloads")
 
 files_sorted = sorted(files, key=lambda x: os.path.getctime(os.path.join(fr"C:\\users\\{username}\\Downloads", x)), reverse=True)
 
+if os.path.exists(fr"C:\\users\\{username}\\Downloads\\Manager\\Password.txt"):
+    start()
+else:
+    start1()
+    
+name = ""
 key = Fernet.generate_key()
 key2 = Fernet(key)
 
@@ -50,6 +57,21 @@ def saving_to_file(email, password):
     with open(f"ANX{numb_gen}.txt", "w") as file:
         file.write(f"{email}\n")
         file.write(f"{password}\n")
+
+def start1():
+
+    X = ("Welcome to my Password Manager :D")
+    print(X.center(0,180))
+    print(emoji.emojize("\nBefore we start i would like you to set up a password :thumbs_up:"))
+    Y = input("Password: ")
+
+    f = open("password.txt", "w")
+    f.write(Y)
+    print("Password Saved!")
+    time.sleep(2)
+    print("Enjoy!")
+    time.sleep(3)
+    start()
 
 def Help():
 
@@ -179,7 +201,7 @@ def start():
 
         print(f"""
               
-            Welcome to my password manager {username} :)
+            Welcome to my password manager {name} :)
 
             [1] - Add Profile
             [2] - See Passwords
